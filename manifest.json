@@ -1,7 +1,7 @@
 {
   "name": "Vocab",
   "short_name": "Vocab",
-  "description": "Ứng dụng học từ vựng bằng flashcard, SRS và quiz.",
+  "description": "Ứng dụng học từ vựng có đồng bộ cloud.",
   "lang": "vi",
   "start_url": "./",
   "scope": "./",

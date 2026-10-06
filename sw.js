@@ -1,4 +1,4 @@
-const CACHE_NAME = "vocab-pwa-v1";
+const CACHE_NAME = "vocab-cloud-pwa-v1";
 
 const APP_SHELL = [
   "./",
@@ -33,45 +33,41 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-  const request = event.request;
+  if (event.request.method !== "GET") return;
 
-  if (request.method !== "GET") return;
-
-  // HTML/navigation: newest online version first, cached app if offline.
-  if (request.mode === "navigate") {
+  if (event.request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
+      fetch(event.request)
         .then(response => {
           const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put("./index.html", copy));
+          caches.open(CACHE_NAME)
+            .then(cache => cache.put("./index.html", copy));
           return response;
         })
-        .catch(async () => {
-          return (
-            await caches.match(request) ||
-            await caches.match("./index.html")
-          );
-        })
+        .catch(async () =>
+          (await caches.match(event.request)) ||
+          (await caches.match("./index.html"))
+        )
     );
     return;
   }
 
-  // Static/runtime assets: cache first, network second.
   event.respondWith(
-    caches.match(request).then(cached => {
+    caches.match(event.request).then(cached => {
       if (cached) return cached;
 
-      return fetch(request)
-        .then(response => {
-          // Cache same-origin and opaque cross-origin assets (e.g. CDN fonts/icons).
-          if (response && (response.ok || response.type === "opaque")) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
-          }
+      return fetch(event.request).then(response => {
+        if (
+          response &&
+          (response.ok || response.type === "opaque")
+        ) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => cache.put(event.request, copy));
+        }
 
-          return response;
-        })
-        .catch(() => cached);
+        return response;
+      });
     })
   );
 });

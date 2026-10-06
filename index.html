@@ -2276,6 +2276,274 @@
             }
         }
 
+
+        /* =========================================================
+           FULL-SCREEN STUDY MODE
+           Chọn phiên ở màn chính -> học ở một màn riêng.
+        ========================================================= */
+
+        .study-focus-header,
+        .study-learning-stage {
+            display: none;
+        }
+
+        body.study-focus-mode {
+            overflow: hidden !important;
+        }
+
+        body.study-focus-mode .cloud-account,
+        body.study-focus-mode .sidebar {
+            display: none !important;
+        }
+
+        body.study-focus-mode .main-content {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            width: 100%;
+            height: 100dvh;
+            min-height: 100dvh;
+            padding: 0;
+            overflow: hidden;
+            background: var(--canvas);
+        }
+
+        body.study-focus-mode #learn {
+            display: block !important;
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            margin: 0;
+            animation: none;
+        }
+
+        body.study-focus-mode #learn > .page-heading,
+        body.study-focus-mode #learn .category-picker,
+        body.study-focus-mode #learn .session-info,
+        body.study-focus-mode #learn .session-controls {
+            display: none !important;
+        }
+
+        body.study-focus-mode .flashcard-container {
+            width: min(860px, 100%);
+            max-width: none;
+            height: 100%;
+            margin: 0 auto;
+            padding:
+                max(16px, env(safe-area-inset-top, 0px))
+                max(20px, env(safe-area-inset-right, 0px))
+                max(18px, env(safe-area-inset-bottom, 0px))
+                max(20px, env(safe-area-inset-left, 0px));
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        body.study-focus-mode .study-focus-header {
+            min-height: 58px;
+            margin-bottom: 14px;
+            display: grid;
+            grid-template-columns: 46px minmax(0, 1fr) 46px;
+            align-items: center;
+            gap: 10px;
+            flex: 0 0 auto;
+        }
+
+        .study-back-btn,
+        .study-focus-audio {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            background: var(--surface);
+            color: var(--ink-2);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .96rem;
+        }
+
+        .study-back-btn:hover,
+        .study-focus-audio:hover {
+            color: var(--primary);
+            border-color: #c4c9d4;
+        }
+
+        .study-focus-heading {
+            min-width: 0;
+            text-align: center;
+        }
+
+        .study-focus-category {
+            color: var(--ink);
+            font-size: .92rem;
+            line-height: 1.25;
+            font-weight: 800;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .study-focus-meta {
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: .72rem;
+            font-weight: 650;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        body.study-focus-mode .study-learning-stage {
+            min-height: 0;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.study-focus-mode #flashcard-area {
+            min-height: 0;
+            flex: 1 1 auto;
+            display: flex;
+            align-items: stretch;
+        }
+
+        body.study-focus-mode #flashcard-area > * {
+            width: 100%;
+        }
+
+        body.study-focus-mode .flip-card {
+            height: auto;
+            min-height: 0;
+            flex: 1 1 auto;
+            margin-bottom: 12px;
+        }
+
+        body.study-focus-mode .typing-card,
+        body.study-focus-mode .quiz-card,
+        body.study-focus-mode .quiz-result,
+        body.study-focus-mode .empty-state,
+        body.study-focus-mode .study-placeholder {
+            width: 100%;
+            min-height: 0;
+            height: 100%;
+        }
+
+        body.study-focus-mode .action-buttons {
+            flex: 0 0 auto;
+            margin-top: 0;
+        }
+
+        body.study-focus-mode .progress-bar {
+            flex: 0 0 auto;
+            margin-top: 12px;
+        }
+
+        /* Ở màn chọn phiên không còn render flashcard phía dưới. */
+        body:not(.study-focus-mode) #learn .study-learning-stage {
+            display: none !important;
+        }
+
+        @media (max-width: 820px) {
+            body.study-focus-mode .main-content {
+                height: 100dvh;
+                min-height: 100dvh;
+            }
+
+            body.study-focus-mode .flashcard-container {
+                padding:
+                    max(10px, env(safe-area-inset-top, 0px))
+                    max(12px, env(safe-area-inset-right, 0px))
+                    max(12px, env(safe-area-inset-bottom, 0px))
+                    max(12px, env(safe-area-inset-left, 0px));
+            }
+
+            body.study-focus-mode .study-focus-header {
+                min-height: 50px;
+                margin-bottom: 8px;
+                grid-template-columns: 42px minmax(0, 1fr) 42px;
+            }
+
+            .study-back-btn,
+            .study-focus-audio {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+            }
+
+            .study-focus-category {
+                font-size: .84rem;
+            }
+
+            .study-focus-meta {
+                font-size: .68rem;
+            }
+
+            body.study-focus-mode .flip-card {
+                min-height: 0;
+                height: auto;
+            }
+
+            body.study-focus-mode .flip-card-front,
+            body.study-focus-mode .flip-card-back {
+                padding: 56px 18px 42px;
+            }
+
+            body.study-focus-mode .word-en {
+                font-size: clamp(2rem, 10vw, 3.25rem);
+            }
+
+            body.study-focus-mode .word-vi {
+                font-size: clamp(1.45rem, 7.5vw, 2.1rem);
+            }
+
+            body.study-focus-mode .action-buttons {
+                gap: 7px;
+            }
+
+            body.study-focus-mode .action-buttons .btn {
+                min-height: 54px;
+                padding: 8px 5px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            body.study-focus-mode .word-example {
+                max-height: 86px;
+                overflow-y: auto;
+            }
+
+            body.study-focus-mode .action-buttons .btn {
+                flex-direction: column;
+                gap: 3px;
+                font-size: .76rem;
+            }
+
+            body.study-focus-mode .action-buttons .btn i {
+                font-size: .92rem;
+            }
+        }
+
+        @media (max-height: 620px) and (max-width: 900px) {
+            body.study-focus-mode .study-focus-header {
+                min-height: 44px;
+                margin-bottom: 5px;
+            }
+
+            body.study-focus-mode .word-example {
+                display: none;
+            }
+
+            body.study-focus-mode .flip-card-front,
+            body.study-focus-mode .flip-card-back {
+                padding-top: 45px;
+                padding-bottom: 34px;
+            }
+        }
+
     </style>
 
 </head>
@@ -2507,27 +2775,65 @@
                     </div>
                 </div>
 
-                <div id="flashcard-area"></div>
-
-                <div class="action-buttons" id="action-buttons">
-                    <button class="btn btn-fail" onclick="processReview(0)">
-                        <i class="fa-solid fa-xmark"></i>
-                        Quên
+                <div class="study-focus-header">
+                    <button
+                        type="button"
+                        class="study-back-btn"
+                        onclick="exitStudyFocusMode()"
+                        aria-label="Quay lại màn chọn phiên học"
+                    >
+                        <i class="fa-solid fa-chevron-left"></i>
                     </button>
 
-                    <button class="btn btn-hard" onclick="processReview(1)">
-                        <i class="fa-solid fa-minus"></i>
-                        Khó
-                    </button>
+                    <div class="study-focus-heading">
+                        <div
+                            class="study-focus-category"
+                            id="study-focus-category"
+                        >
+                            Phiên học
+                        </div>
 
-                    <button class="btn btn-easy" onclick="processReview(2)">
-                        <i class="fa-solid fa-check"></i>
-                        Dễ
+                        <div class="study-focus-meta">
+                            <span id="study-focus-source">Đến hạn</span>
+                            <span>·</span>
+                            <span id="study-focus-progress-text">0 / 0</span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="study-focus-audio"
+                        onclick="speakCurrentWord()"
+                        aria-label="Phát âm từ hiện tại"
+                        title="Phát âm"
+                    >
+                        <i class="fa-solid fa-volume-high"></i>
                     </button>
                 </div>
 
-                <div class="progress-bar">
-                    <div class="progress-fill" id="session-progress"></div>
+                <div class="study-learning-stage">
+                    <div id="flashcard-area"></div>
+
+                    <div class="action-buttons" id="action-buttons">
+                        <button class="btn btn-fail" onclick="processReview(0)">
+                            <i class="fa-solid fa-xmark"></i>
+                            Quên
+                        </button>
+
+                        <button class="btn btn-hard" onclick="processReview(1)">
+                            <i class="fa-solid fa-minus"></i>
+                            Khó
+                        </button>
+
+                        <button class="btn btn-easy" onclick="processReview(2)">
+                            <i class="fa-solid fa-check"></i>
+                            Dễ
+                        </button>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="session-progress"></div>
+                    </div>
                 </div>
 
             </div>
@@ -5563,16 +5869,107 @@
             `;
         }
 
+        function updateStudyFocusHeader() {
+            const categoryEl =
+                document.getElementById("study-focus-category");
+
+            const sourceEl =
+                document.getElementById("study-focus-source");
+
+            const progressEl =
+                document.getElementById("study-focus-progress-text");
+
+            if (categoryEl) {
+                categoryEl.textContent =
+                    selectedStudyCategory
+                        ? getCategoryLabel(selectedStudyCategory)
+                        : "Phiên học";
+            }
+
+            if (sourceEl) {
+                sourceEl.textContent =
+                    sessionSourceMode === "hard"
+                        ? "Từ khó"
+                        : "Đến hạn";
+            }
+
+            if (progressEl) {
+                progressEl.textContent =
+                    `${Math.min(sessionCompleted, sessionTotal)} / ${sessionTotal}`;
+            }
+        }
+
+        function enterStudyFocusMode() {
+            document.body.classList.add("study-focus-mode");
+            updateStudyFocusHeader();
+
+            // Đưa màn học lên đầu ngay cả khi trước đó màn chọn đã cuộn xuống.
+            window.scrollTo(0, 0);
+        }
+
+        function exitStudyFocusMode(force = false) {
+            const sessionInProgress =
+                sessionTotal > 0 &&
+                sessionCompleted < sessionTotal;
+
+            if (
+                !force &&
+                sessionInProgress &&
+                !confirm(
+                    "Thoát phiên học hiện tại? Tiến độ các từ đã trả lời vẫn được lưu."
+                )
+            ) {
+                return;
+            }
+
+            speechSynthesis.cancel();
+            hideUndoToast();
+
+            document.body.classList.remove("study-focus-mode");
+
+            reviewQueue = [];
+            currentWord = null;
+            sessionTotal = 0;
+            sessionAnswered = 0;
+            sessionCompleted = 0;
+            sessionWordState = new Map();
+            lastSessionWordIds = [];
+
+            const buttons =
+                document.getElementById("action-buttons");
+
+            buttons?.classList.remove("show");
+
+            document.getElementById(
+                "session-size-text"
+            ).textContent = "0";
+
+            document.getElementById(
+                "session-progress"
+            ).style.width = "0%";
+
+            updateStudyFocusHeader();
+            showStudyCategoryReadyState();
+        }
+
+        function speakCurrentWord() {
+            if (!currentWord) return;
+
+            speakWord(currentWord.en);
+        }
+
         function startSelectedCategorySession() {
             if (!selectedStudyCategory) {
                 alert("Hãy chọn một danh mục trước khi bắt đầu.");
                 return;
             }
 
+            enterStudyFocusMode();
             startSession("due");
         }
 
         function resetStudyCategorySelection() {
+            document.body.classList.remove("study-focus-mode");
             selectedStudyCategory = "";
 
             document.querySelectorAll(
@@ -5851,6 +6248,7 @@
 
             document.getElementById("session-progress").style.width = "0%";
 
+            updateStudyFocusHeader();
             nextCard();
         }
 
@@ -5860,6 +6258,7 @@
                 return;
             }
 
+            enterStudyFocusMode();
             startSession("hard");
         }
 
@@ -6078,6 +6477,8 @@
 
             document.getElementById("session-progress").style.width =
                 `${percent}%`;
+
+            updateStudyFocusHeader();
         }
 
         function nextCard() {

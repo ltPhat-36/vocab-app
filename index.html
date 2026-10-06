@@ -7435,6 +7435,7 @@
                 "- Tất cả từ sẽ về Level 0\n" +
                 "- Tất cả từ sẽ cần ôn lại ngay\n" +
                 "- Điểm từ khó / hay quên sẽ về 0\n" +
+                "- Lịch sử học và tỷ lệ nhớ sẽ được xóa\n" +
                 "- Danh sách từ vựng vẫn được giữ nguyên\n\n" +
                 "Thao tác này không thể hoàn tác."
             );
@@ -7463,7 +7464,12 @@
             sessionAnswered = 0;
             sessionTotal = 0;
 
+            // Reset luôn lịch sử học để các thống kê
+            // Hôm nay / 7 ngày / 30 ngày trở về trạng thái ban đầu.
+            studyHistory = {};
+
             saveData();
+            saveStudyHistory();
 
             // Cập nhật giao diện
             tableDirty = true;
@@ -7478,7 +7484,7 @@
                 startSession();
             }
 
-            alert("Đã reset toàn bộ tiến độ học về Level 0.");
+            alert("Đã reset toàn bộ tiến độ và lịch sử học.");
         }
 
         /* =========================================================

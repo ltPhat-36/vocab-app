@@ -1,4 +1,4 @@
-const CACHE_NAME = "vocab-cloud-pwa-v5";
+const CACHE_NAME = "vocab-cloud-pwa-v8";
 
 const APP_SHELL = [
   "./",

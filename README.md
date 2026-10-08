@@ -1,27 +1,17 @@
-# Vocab Cloud — GitHub Pages
+# Vocab Premium v12 — mobile progress persistence fix
 
-Upload/replace these items in the root of `ItPhat-36/vocab-app`:
-
+Upload/replace in GitHub Pages root:
 - index.html
-- manifest.json
 - sw.js
-- icons/
+- manifest.json (same manifest content, included for completeness)
 
-Then wait for GitHub Pages to redeploy.
+Keep existing icons/ folder.
 
-## Supabase
-The frontend contains ONLY the Supabase Publishable key.
-Do NOT put any `sb_secret_...` or service-role key in this repository.
-
-Required Supabase setup:
-- GitHub provider enabled
-- Site URL: https://itphat-36.github.io/vocab-app/
-- Redirect URL: https://itphat-36.github.io/vocab-app/
-- `public.vocab_sync` table + RLS policies already configured
-
-## First login
-Click `Đăng nhập GitHub`.
-If cloud has no data yet, the current device's local progress becomes the initial cloud state.
-After that, devices using the same GitHub account compare modification times and sync the newer state.
-
-The app still saves locally first, so learning works offline. When the connection returns, it syncs again.
+Core fix:
+- local progress is saved immediately;
+- startup compares local modifiedAt with cloud modifiedAt;
+- stale cloud is never blindly applied over newer local progress;
+- interrupted iPhone background uploads keep dirty=true;
+- dirty local is uploaded on next launch if it is newer;
+- a recovery snapshot is saved before any cloud state overwrites local data;
+- service worker cache version bumped to vocab-premium-v12.

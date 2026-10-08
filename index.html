@@ -5705,6 +5705,7 @@ textarea {
         const CLOUD_LAST_SYNC_KEY = "vocabMasterCloudLastSyncAt";
         const CLOUD_DIRTY_KEY = "vocabMasterCloudDirty";
         const CLOUD_CHANGE_SEQ_KEY = "vocabMasterCloudChangeSeq";
+        const CLOUD_RECOVERY_KEY = "vocabMasterCloudRecoveryBackup";
 
         const intervals = [0, 1, 3, 7, 14, 30];
 
@@ -6169,13 +6170,15 @@ textarea {
             }
         }
 
-        function saveStudyHistory() {
+        function saveStudyHistory(markCloud = true) {
             localStorage.setItem(
                 HISTORY_KEY,
                 JSON.stringify(studyHistory)
             );
 
-            markLocalCloudChange();
+            if (markCloud) {
+                markLocalCloudChange();
+            }
         }
 
         function getLocalDateKey(date = new Date()) {
@@ -6220,7 +6223,7 @@ textarea {
             if (quality === 1) dayData.hardCount += 1;
             if (quality === 2) dayData.easyCount += 1;
 
-            saveStudyHistory();
+            saveStudyHistory(false);
         }
 
         function getRetentionStats(days) {
@@ -8771,7 +8774,7 @@ textarea {
             studyHistory = {};
 
             saveData();
-            saveStudyHistory();
+            saveStudyHistory(false);
 
             // Cập nhật giao diện
             tableDirty = true;
@@ -8954,6 +8957,49 @@ textarea {
             return Math.max(wordTimestamp, historyTimestamp, 0);
         }
 
+        function getCloudRecordModifiedAt(record) {
+            if (!record) return 0;
+
+            const stateModifiedAt =
+                Number(record.app_state?.modifiedAt) || 0;
+
+            if (stateModifiedAt > 0) {
+                return stateModifiedAt;
+            }
+
+            const rowUpdatedAt =
+                Date.parse(record.updated_at || "");
+
+            return Number.isFinite(rowUpdatedAt)
+                ? rowUpdatedAt
+                : 0;
+        }
+
+        function saveRecoveryBackup(reason = "before-cloud-apply") {
+            try {
+                localStorage.setItem(
+                    CLOUD_RECOVERY_KEY,
+                    JSON.stringify({
+                        savedAt: Date.now(),
+                        reason,
+                        modifiedAt: getLocalCloudUpdatedAt(),
+                        db,
+                        studyHistory,
+                        settings: {
+                            sessionLimit,
+                            studyDirection,
+                            studyMode
+                        }
+                    })
+                );
+            } catch (error) {
+                console.warn(
+                    "Không tạo được recovery backup:",
+                    error
+                );
+            }
+        }
+
         function isLocalCloudDirty() {
             return localStorage.getItem(CLOUD_DIRTY_KEY) === "1";
         }
@@ -9008,7 +9054,7 @@ textarea {
             scheduleCloudSync();
         }
 
-        function scheduleCloudSync(delay = 900) {
+        function scheduleCloudSync(delay = 450) {
             if (!cloudUser || !cloudClient || applyingCloudState) {
                 return;
             }
@@ -9044,7 +9090,11 @@ textarea {
             };
         }
 
-        async function uploadCloudState() {
+        async function uploadCloudState(options = {}) {
+            const {
+                skipPreflight = false
+            } = options;
+
             if (!cloudClient || !cloudUser) return;
 
             if (cloudSyncBusy) {
@@ -9063,12 +9113,45 @@ textarea {
             cloudSyncBusy = true;
             cloudSyncPending = false;
 
-            // Sequence tại đúng thời điểm snapshot bắt đầu upload.
             const uploadSeq = getCloudChangeSeq();
 
             setCloudStatus("syncing", "Đang đồng bộ…");
 
             try {
+                /*
+                    Trước khi upload tự động, kiểm tra cloud.
+                    Nếu một thiết bị khác có bản thật sự mới hơn,
+                    không được ghi bản local cũ đè lên.
+                */
+                if (!skipPreflight) {
+                    const remote = await fetchCloudRecord();
+
+                    if (remote?.app_state) {
+                        const remoteAt =
+                            getCloudRecordModifiedAt(remote);
+
+                        const localAt =
+                            getLocalCloudUpdatedAt();
+
+                        if (
+                            remoteAt > 0 &&
+                            remoteAt > localAt + 1000
+                        ) {
+                            applyCloudState(
+                                remote.app_state,
+                                "remote-newer-before-upload"
+                            );
+
+                            setCloudStatus(
+                                "synced",
+                                "Đã tải bản cloud mới hơn"
+                            );
+
+                            return;
+                        }
+                    }
+                }
+
                 const state = buildCloudState();
                 const nowIso = new Date().toISOString();
 
@@ -9094,13 +9177,14 @@ textarea {
 
                 const currentSeq = getCloudChangeSeq();
 
+                /*
+                    Chỉ clear dirty khi KHÔNG có thay đổi mới
+                    xảy ra trong lúc request đang chạy.
+                */
                 if (currentSeq === uploadSeq) {
-                    // Snapshot vừa upload vẫn là bản local mới nhất.
                     setLocalCloudDirty(false);
                     setCloudStatus("synced", "Đã đồng bộ");
                 } else {
-                    // Trong lúc upload người dùng đã học/chỉnh thêm.
-                    // Giữ dirty và upload tiếp ngay.
                     setLocalCloudDirty(true);
                     cloudSyncPending = true;
 
@@ -9113,7 +9197,11 @@ textarea {
             } catch (error) {
                 console.error("Upload cloud thất bại:", error);
 
-                // Không bao giờ coi là đã sync nếu request lỗi.
+                /*
+                    Quan trọng trên iPhone:
+                    request bị iOS dừng thì dirty PHẢI còn nguyên.
+                    Lần mở app sau local sẽ được giữ và sync lại.
+                */
                 setLocalCloudDirty(true);
                 cloudSyncPending = true;
 
@@ -9141,7 +9229,7 @@ textarea {
                                 error
                             );
                         });
-                    }, 180);
+                    }, 220);
                 }
             }
         }
@@ -9160,7 +9248,7 @@ textarea {
             return data || null;
         }
 
-        function applyCloudState(state) {
+        function applyCloudState(state, reason = "cloud-apply") {
             if (!state || !Array.isArray(state.db)) {
                 throw new Error("Cloud state không hợp lệ.");
             }
@@ -9168,6 +9256,12 @@ textarea {
             applyingCloudState = true;
 
             try {
+                /*
+                    Trước khi cloud ghi đè local, giữ một bản cứu hộ.
+                    Nếu có sự cố vẫn còn snapshot local trước đó.
+                */
+                saveRecoveryBackup(reason);
+
                 localStorage.setItem(
                     STORAGE_KEY,
                     JSON.stringify(state.db)
@@ -9327,28 +9421,17 @@ textarea {
                 return;
             }
 
-            setCloudStatus("syncing", "Đang kiểm tra cloud…");
+            setCloudStatus(
+                "syncing",
+                "Đang kiểm tra bản mới nhất…"
+            );
 
             try {
                 const record = await fetchCloudRecord();
 
                 /*
-                    QUY TẮC ĐỒNG BỘ MỚI
-
-                    1. Nếu cloud chưa có dữ liệu:
-                       -> upload dữ liệu hiện tại lên làm bản đầu tiên.
-
-                    2. Nếu thiết bị này CÓ thay đổi local chưa sync (dirty):
-                       -> upload local lên cloud.
-
-                    3. Nếu thiết bị này KHÔNG có thay đổi chưa sync:
-                       -> cloud là nguồn chuẩn, luôn tải cloud xuống.
-
-                    Nhờ vậy một điện thoại chỉ đang mở app / bấm Sync
-                    sẽ không thể ghi ngược dữ liệu cũ lên trên bản reset
-                    hoặc bản học mới từ laptop.
+                    Không có cloud -> local là bản đầu tiên.
                 */
-
                 if (!record || !record.app_state) {
                     if (!getLocalCloudUpdatedAt()) {
                         localStorage.setItem(
@@ -9357,24 +9440,106 @@ textarea {
                         );
                     }
 
-                    // Cloud trống: dữ liệu máy hiện tại là bản khởi đầu.
                     setLocalCloudDirty(true);
-                    await uploadCloudState();
+
+                    await uploadCloudState({
+                        skipPreflight: true
+                    });
+
                     return;
                 }
 
-                if (isLocalCloudDirty()) {
-                    await uploadCloudState();
+                const localAt =
+                    getLocalCloudUpdatedAt();
+
+                const cloudAt =
+                    getCloudRecordModifiedAt(record);
+
+                const localDirty =
+                    isLocalCloudDirty();
+
+                /*
+                    QUY TẮC V12
+
+                    A. Local đang dirty:
+                       - Local mới hơn/không cũ hơn cloud:
+                         upload local.
+                       - Cloud rõ ràng mới hơn:
+                         cloud thắng.
+
+                    B. Local không dirty:
+                       - Cloud mới hơn:
+                         download cloud.
+                       - Local mới hơn cloud:
+                         upload local (khắc phục trường hợp bản cũ
+                         từng clear dirty sai).
+                       - Gần bằng nhau:
+                         không ghi đè gì cả.
+
+                    Vì vậy mở lại app trên iPhone sẽ KHÔNG còn
+                    tự lấy một cloud cũ đè lên tiến trình vừa học.
+                */
+
+                if (localDirty) {
+                    if (
+                        cloudAt > 0 &&
+                        cloudAt > localAt + 1000
+                    ) {
+                        applyCloudState(
+                            record.app_state,
+                            "cloud-newer-than-dirty-local"
+                        );
+
+                        setCloudStatus(
+                            "synced",
+                            "Đã tải bản cloud mới hơn"
+                        );
+                    } else {
+                        await uploadCloudState({
+                            skipPreflight: true
+                        });
+                    }
+
                     return;
                 }
 
-                // Máy không có thay đổi chưa sync:
-                // luôn lấy cloud làm nguồn chuẩn.
-                applyCloudState(record.app_state);
+                if (
+                    cloudAt > 0 &&
+                    cloudAt > localAt + 1000
+                ) {
+                    applyCloudState(
+                        record.app_state,
+                        "cloud-newer-on-startup"
+                    );
 
+                    setCloudStatus(
+                        "synced",
+                        "Đã tải bản cloud mới hơn"
+                    );
+
+                    return;
+                }
+
+                if (
+                    localAt > 0 &&
+                    localAt > cloudAt + 1000
+                ) {
+                    setLocalCloudDirty(true);
+
+                    await uploadCloudState({
+                        skipPreflight: true
+                    });
+
+                    return;
+                }
+
+                /*
+                    Hai bên cùng revision hoặc chênh rất nhỏ:
+                    giữ nguyên local, tuyệt đối không apply cloud vô cớ.
+                */
                 setCloudStatus(
                     "synced",
-                    "Đã tải bản mới nhất"
+                    "Đã là bản mới nhất"
                 );
 
             } catch (error) {
@@ -9383,9 +9548,13 @@ textarea {
                     error
                 );
 
+                /*
+                    Không kết nối được cloud không được ảnh hưởng
+                    đến dữ liệu local.
+                */
                 setCloudStatus(
                     "error",
-                    "Không kết nối được cloud"
+                    "Cloud lỗi · dữ liệu vẫn ở máy"
                 );
             }
         }
@@ -9615,6 +9784,7 @@ textarea {
                 isLocalCloudDirty() &&
                 navigator.onLine
             ) {
+                clearTimeout(cloudSyncTimer);
                 cloudSyncPending = true;
 
                 uploadCloudState().catch(error => {

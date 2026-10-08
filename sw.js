@@ -1,4 +1,4 @@
-const CACHE_NAME = "vocab-premium-v11";
+const CACHE_NAME = "vocab-premium-v12";
 
 const APP_SHELL = [
   "./",
@@ -33,6 +33,7 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
 
+  // HTML navigation: network first so GitHub updates arrive quickly.
   if (event.request.mode === "navigate") {
     event.respondWith(
       fetch(event.request)

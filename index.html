@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#f7f8fb">
@@ -11,10 +14,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
     <title>Vocab — Spaced Repetition</title>
 
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -213,6 +213,7 @@
                 opacity: 0;
                 transform: translateY(4px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -291,7 +292,7 @@
             gap: 14px;
         }
 
-        .session-controls > div:first-child {
+        .session-controls>div:first-child {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -352,7 +353,7 @@
             text-align: center;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
-            transition: transform .48s cubic-bezier(.2,.7,.2,1);
+            transition: transform .48s cubic-bezier(.2, .7, .2, 1);
             will-change: transform;
         }
 
@@ -1109,8 +1110,8 @@
                 padding: 7px;
                 border: 1px solid rgba(218, 222, 232, .92);
                 border-radius: 17px;
-                background: rgba(255,255,255,.94);
-                box-shadow: 0 14px 38px rgba(20,28,45,.14);
+                background: rgba(255, 255, 255, .94);
+                box-shadow: 0 14px 38px rgba(20, 28, 45, .14);
                 backdrop-filter: blur(16px);
                 flex-direction: row;
                 align-items: center;
@@ -1185,7 +1186,7 @@
                 flex-direction: column;
             }
 
-            .session-controls > div:first-child {
+            .session-controls>div:first-child {
                 justify-content: space-between;
             }
 
@@ -1685,7 +1686,7 @@
             border-radius: 20px;
             background: var(--surface);
             box-shadow: 0 30px 80px rgba(20, 28, 45, .22);
-            border: 1px solid rgba(255,255,255,.6);
+            border: 1px solid rgba(255, 255, 255, .6);
         }
 
         .word-modal-head {
@@ -1791,7 +1792,7 @@
             border-radius: 13px;
             background: #172033;
             color: #fff;
-            box-shadow: 0 18px 48px rgba(20,28,45,.22);
+            box-shadow: 0 18px 48px rgba(20, 28, 45, .22);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1936,7 +1937,7 @@
         .category-card.active {
             border-color: #aeb6ff;
             background: var(--primary-soft);
-            box-shadow: 0 0 0 2px rgba(66,85,255,.06);
+            box-shadow: 0 0 0 2px rgba(66, 85, 255, .06);
         }
 
         .category-card-icon {
@@ -1993,7 +1994,7 @@
             padding: 42px 24px;
             border: 1px dashed #ced3dd;
             border-radius: var(--radius-lg);
-            background: rgba(255,255,255,.55);
+            background: rgba(255, 255, 255, .55);
             color: var(--muted);
             display: flex;
             flex-direction: column;
@@ -2067,6 +2068,7 @@
         }
 
         @media (max-width: 760px) {
+
             .category-grid,
             .manage-category-tabs {
                 grid-template-columns: 1fr;
@@ -2108,7 +2110,7 @@
             min-height: 42px;
             border: 1px solid var(--line-strong);
             border-radius: 12px;
-            background: rgba(255,255,255,.96);
+            background: rgba(255, 255, 255, .96);
             box-shadow: var(--shadow-sm);
             backdrop-filter: blur(12px);
         }
@@ -2212,7 +2214,7 @@
         .cloud-local-note {
             padding: 7px 10px;
             border-radius: 10px;
-            background: rgba(255,255,255,.9);
+            background: rgba(255, 255, 255, .9);
             color: var(--muted);
             font-size: .7rem;
             border: 1px solid var(--line);
@@ -2322,7 +2324,7 @@
             animation: none;
         }
 
-        body.study-focus-mode #learn > .page-heading,
+        body.study-focus-mode #learn>.page-heading,
         body.study-focus-mode #learn .category-picker,
         body.study-focus-mode #learn .session-info,
         body.study-focus-mode #learn .session-controls {
@@ -2335,10 +2337,7 @@
             height: 100%;
             margin: 0 auto;
             padding:
-                max(16px, env(safe-area-inset-top, 0px))
-                max(20px, env(safe-area-inset-right, 0px))
-                max(18px, env(safe-area-inset-bottom, 0px))
-                max(20px, env(safe-area-inset-left, 0px));
+                max(16px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(18px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px));
             display: flex;
             flex-direction: column;
             align-items: stretch;
@@ -2416,7 +2415,7 @@
             align-items: stretch;
         }
 
-        body.study-focus-mode #flashcard-area > * {
+        body.study-focus-mode #flashcard-area>* {
             width: 100%;
         }
 
@@ -2460,10 +2459,7 @@
 
             body.study-focus-mode .flashcard-container {
                 padding:
-                    max(10px, env(safe-area-inset-top, 0px))
-                    max(12px, env(safe-area-inset-right, 0px))
-                    max(12px, env(safe-area-inset-bottom, 0px))
-                    max(12px, env(safe-area-inset-left, 0px));
+                    max(10px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
             }
 
             body.study-focus-mode .study-focus-header {
@@ -2549,62 +2545,676 @@
             }
         }
 
-    </style>
+
+        /* =========================================================
+           TODAY REVIEW
+        ========================================================= */
+
+        .today-review-card {
+            margin-bottom: 30px;
+            padding: 18px 20px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .today-review-main {
+            min-width: 0;
+        }
+
+        .today-review-kicker {
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: .7rem;
+            font-weight: 800;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        .today-review-title {
+            color: var(--ink);
+            font-size: 1.02rem;
+            font-weight: 800;
+            letter-spacing: -.015em;
+        }
+
+        .today-review-meta {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: .82rem;
+            line-height: 1.45;
+        }
+
+        .today-review-count {
+            color: var(--ink);
+            font-weight: 800;
+        }
+
+        .today-review-btn {
+            flex: 0 0 auto;
+            min-width: 126px;
+        }
+
+        body.study-focus-mode .section:not(#learn) {
+            display: none !important;
+        }
+
+        @media (max-width: 560px) {
+            .today-review-card {
+                padding: 16px;
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .today-review-btn {
+                width: 100%;
+            }
+        }
+    
+/* PREMIUM UI OVERRIDES */
+:root {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --primary-soft: rgba(99, 102, 241, 0.1);
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #d946ef 100%);
+    
+    --success: #10b981;
+    --success-soft: rgba(16, 185, 129, 0.1);
+    --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    
+    --warning: #f59e0b;
+    --warning-soft: rgba(245, 158, 11, 0.1);
+    --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+    
+    --danger: #ef4444;
+    --danger-soft: rgba(239, 68, 68, 0.1);
+    --danger-gradient: linear-gradient(135deg, #ef4444 0%, #e11d48 100%);
+    
+    --ink: #0f172a;
+    --dark: #0f172a;
+    --ink-2: #334155;
+    --muted: #64748b;
+    
+    --line: rgba(226, 232, 240, 0.8);
+    --line-strong: rgba(203, 213, 225, 0.9);
+    
+    --canvas: #f8fafc;
+    --surface: rgba(255, 255, 255, 0.7);
+    --surface-2: rgba(255, 255, 255, 0.9);
+    
+    --radius-sm: 14px;
+    --radius: 22px;
+    --radius-lg: 30px;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
+    --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+    --shadow-glass: inset 0 1px 1px rgba(255,255,255,0.9), 0 8px 32px rgba(0,0,0,0.05);
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f0f4f8;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(99,102,241,0.1) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, rgba(217,70,239,0.1) 0, transparent 50%);
+}
+
+.sidebar {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-sm);
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: -0.04em;
+}
+
+.logo i {
+    background: var(--primary-gradient);
+    -webkit-text-fill-color: white;
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+    border-radius: 12px;
+    color: white;
+}
+
+.nav-item {
+    font-weight: 700;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 4px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-item.active {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    box-shadow: 0 8px 20px -4px rgba(99, 102, 241, 0.4);
+}
+.nav-item.active i {
+    color: white !important;
+}
+
+.page-heading h1 {
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, var(--ink), #475569);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.page-eyebrow {
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn {
+    border-radius: 16px;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.btn-primary, .btn-submit, .category-start-btn, .typing-check, .today-review-btn {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    border: none;
+    box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover, .btn-submit:hover, .category-start-btn:hover, .typing-check:hover, .today-review-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -4px rgba(99, 102, 241, 0.5);
+    background: linear-gradient(135deg, #4f46e5 0%, #c026d3 100%) !important;
+}
+
+.flip-card-front, .flip-card-back {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 1) !important;
+    box-shadow: var(--shadow-glass), var(--shadow-lg) !important;
+    border-radius: var(--radius-lg) !important;
+}
+
+.word-en {
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    background: linear-gradient(to right, #0f172a, #334155);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.word-vi {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.review-badge {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.btn-audio {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(255,255,255,1) !important;
+    box-shadow: var(--shadow-sm);
+    border-radius: 14px;
+}
+.btn-audio:hover {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(99,102,241,0.3);
+}
+
+.category-card, .stat-card, .level-stat-card, .retention-card, .quiz-card, .typing-card, .empty-state, .add-form, .word-modal-card, .today-review-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+}
+
+.category-card:hover, .stat-card:hover, .level-stat-card:hover, .retention-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.category-card.active {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-md);
+}
+
+.category-card-icon {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    color: var(--primary);
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
+    border-radius: 12px;
+}
+.category-card.active .category-card-icon {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.stat-card .value {
+    font-weight: 900;
+}
+
+.level-stat-value {
+    font-weight: 900;
+}
+
+.progress-bar, .level-mini-bar {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 99px;
+}
+
+.progress-fill {
+    background: var(--primary-gradient);
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.5);
+}
+
+.session-controls {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-md);
+    border-radius: 18px;
+}
+
+input, select, textarea {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+}
+
+input:focus, select:focus, textarea:focus {
+    background: white !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15) !important;
+    border-color: var(--primary) !important;
+}
+
+.btn-fail, .btn-hard, .btn-easy {
+    position: relative;
+    overflow: hidden;
+    color: white !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    border-radius: 16px !important;
+}
+
+.btn-fail::before, .btn-hard::before, .btn-easy::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.btn-fail { background: var(--danger-gradient) !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.btn-hard { background: var(--warning-gradient) !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.btn-easy { background: var(--success-gradient) !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+
+.btn-fail:hover { box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.5) !important; transform: translateY(-3px) scale(1.02); }
+.btn-hard:hover { box-shadow: 0 10px 20px -5px rgba(245, 158, 11, 0.5) !important; transform: translateY(-3px) scale(1.02); }
+.btn-easy:hover { box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.5) !important; transform: translateY(-3px) scale(1.02); }
+
+.cloud-account {
+    backdrop-filter: blur(20px);
+}
+.cloud-login-btn, .cloud-pill {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255,255,255,1);
+    box-shadow: var(--shadow-md);
+    border-radius: 16px;
+}
+.cloud-login-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.table-shell, .history-table-shell {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+th {
+    background: rgba(255,255,255,0.5) !important;
+}
+tr:hover td {
+    background: rgba(255,255,255,0.8) !important;
+}
+
+.difficulty-pill {
+    border-radius: 8px !important;
+}
+
+/* Modal styling upgrade */
+.word-modal-card {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.8);
+}
+.modal-close {
+    border-radius: 12px;
+    background: rgba(255,255,255,0.8);
+}
+.modal-close:hover {
+    background: white;
+    color: var(--danger);
+}
+
+@media (max-width: 820px) {
+    body {
+        background: #f0f4f8;
+        background-image: 
+            radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0, transparent 50%), 
+            radial-gradient(at 100% 100%, rgba(217, 70, 239, 0.1) 0, transparent 50%);
+    }
+
+    .sidebar {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255,255,255,0.9);
+        box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+        border-radius: 24px;
+        margin: 0 12px 12px 12px;
+        padding: 8px;
+    }
+    
+    .nav-item {
+        border-radius: 18px;
+        margin-bottom: 0;
+    }
+    
+    .nav-item.active {
+        background: var(--primary-gradient) !important;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
+    }
+    
+    .nav-item.active i {
+        color: white !important;
+        transform: scale(1.1);
+    }
+    
+    .main-content {
+        padding-bottom: 130px;
+    }
+    
+    .flip-card-front, .flip-card-back {
+        border-radius: 24px !important;
+    }
+}
+
+    
+/* =========================================================
+   SCROLL PERFORMANCE PATCH
+   Giữ giao diện premium nhưng tránh repaint blur liên tục,
+   đặc biệt trên iPhone / Safari.
+========================================================= */
+
+/* Manual scrolling không cần smooth behavior. */
+.main-content {
+    scroll-behavior: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*
+   backdrop-filter trên nhiều phần tử là nguyên nhân lớn gây
+   giật khi scroll. Các card lặp nhiều chuyển sang nền gần
+   như đặc để giữ cảm giác glass mà không phải blur realtime.
+*/
+.category-card,
+.stat-card,
+.level-stat-card,
+.retention-card,
+.quiz-card,
+.typing-card,
+.empty-state,
+.add-form,
+.word-modal-card,
+.today-review-card,
+.session-controls,
+.table-shell,
+.history-table-shell,
+.flip-card-front,
+.flip-card-back,
+input,
+select,
+textarea,
+.btn {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Nền đủ sáng để vẫn giữ phong cách premium. */
+.category-card,
+.stat-card,
+.level-stat-card,
+.retention-card,
+.quiz-card,
+.typing-card,
+.empty-state,
+.add-form,
+.today-review-card,
+.session-controls,
+.table-shell,
+.history-table-shell {
+    background: rgba(255, 255, 255, 0.96) !important;
+}
+
+/* Flashcard vẫn nổi bật nhưng bỏ blur 30px cực nặng. */
+.flip-card-front,
+.flip-card-back {
+    background: rgba(255, 255, 255, 0.98) !important;
+    box-shadow:
+        0 1px 2px rgba(15, 23, 42, 0.04),
+        0 12px 30px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Shadow nhẹ hơn cho những card xuất hiện nhiều trên màn hình. */
+.category-card,
+.stat-card,
+.level-stat-card,
+.retention-card,
+.today-review-card,
+.session-controls,
+.table-shell,
+.history-table-shell,
+.add-form {
+    box-shadow:
+        0 1px 2px rgba(15, 23, 42, 0.035),
+        0 7px 18px rgba(15, 23, 42, 0.055) !important;
+}
+
+/* Tránh transition "all" khiến browser theo dõi quá nhiều property. */
+.nav-item {
+    transition:
+        background-color .18s ease,
+        color .18s ease,
+        transform .18s ease,
+        box-shadow .18s ease !important;
+}
+
+.btn {
+    transition:
+        transform .16s ease,
+        box-shadow .16s ease,
+        background-color .16s ease,
+        border-color .16s ease !important;
+}
+
+.category-card,
+.stat-card,
+.level-stat-card,
+.retention-card,
+.today-review-card {
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        background-color .18s ease,
+        border-color .18s ease !important;
+}
+
+/* Modal chỉ blur overlay một lớp, không blur cả card bên trong. */
+.word-modal-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.99) !important;
+}
+
+/* Fixed cloud UI: dùng nền gần đặc thay vì blur realtime. */
+.cloud-account,
+.cloud-login-btn,
+.cloud-pill {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.cloud-login-btn,
+.cloud-pill {
+    background: rgba(255, 255, 255, 0.97) !important;
+}
+
+/*
+   Tối ưu mạnh riêng cho điện thoại:
+   - bỏ radial-gradient trên body
+   - bottom nav không blur nội dung đang scroll phía sau
+   - tắt hover animation vốn không cần trên touch
+*/
+@media (max-width: 820px) {
+    body {
+        background: #f4f6fa !important;
+        background-image: none !important;
+    }
+
+    .sidebar {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10) !important;
+    }
+
+    .cloud-login-btn,
+    .cloud-pill {
+        background: rgba(255, 255, 255, 0.99) !important;
+    }
+
+    .category-card,
+    .stat-card,
+    .level-stat-card,
+    .retention-card,
+    .today-review-card,
+    .session-controls,
+    .table-shell,
+    .history-table-shell,
+    .add-form,
+    .quiz-card,
+    .typing-card,
+    .empty-state {
+        background: #fff !important;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .nav-item:hover,
+    .category-card:hover,
+    .stat-card:hover,
+    .level-stat-card:hover,
+    .retention-card:hover,
+    .btn:hover,
+    .cloud-login-btn:hover,
+    .btn-audio:hover {
+        transform: none !important;
+    }
+
+    .category-card,
+    .stat-card,
+    .level-stat-card,
+    .retention-card,
+    .today-review-card,
+    .nav-item,
+    .btn {
+        transition-duration: .10s !important;
+    }
+}
+
+/* Tôn trọng Reduce Motion và giảm animation nếu người dùng bật. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+</style>
 
 </head>
 
 <body>
 
     <div class="cloud-account" id="cloud-account">
-        <button
-            type="button"
-            class="cloud-login-btn"
-            id="cloud-login-btn"
-            onclick="loginWithGitHub()"
-        >
+        <button type="button" class="cloud-login-btn" id="cloud-login-btn" onclick="loginWithGitHub()">
             <i class="fa-brands fa-github"></i>
             Đăng nhập GitHub
         </button>
 
         <div class="cloud-pill" id="cloud-user-pill" hidden>
-            <img
-                class="cloud-avatar"
-                id="cloud-avatar"
-                alt=""
-            >
+            <img class="cloud-avatar" id="cloud-avatar" alt="">
 
             <div class="cloud-user">
                 <div class="cloud-user-name" id="cloud-user-name">
                     GitHub
                 </div>
 
-                <div
-                    class="cloud-status"
-                    id="cloud-status"
-                    data-state="idle"
-                >
+                <div class="cloud-status" id="cloud-status" data-state="idle">
                     <span class="cloud-status-dot"></span>
                     <span id="cloud-status-text">Chưa đồng bộ</span>
                 </div>
             </div>
 
-            <button
-                type="button"
-                class="cloud-icon-btn"
-                onclick="syncCloudNow()"
-                title="Đồng bộ ngay"
-                aria-label="Đồng bộ ngay"
-            >
+            <button type="button" class="cloud-icon-btn" onclick="syncCloudNow()" title="Đồng bộ ngay"
+                aria-label="Đồng bộ ngay">
                 <i class="fa-solid fa-rotate"></i>
             </button>
 
-            <button
-                type="button"
-                class="cloud-icon-btn"
-                onclick="logoutCloud()"
-                title="Đăng xuất"
-                aria-label="Đăng xuất"
-            >
+            <button type="button" class="cloud-icon-btn" onclick="logoutCloud()" title="Đăng xuất"
+                aria-label="Đăng xuất">
                 <i class="fa-solid fa-right-from-bracket"></i>
             </button>
         </div>
@@ -2653,12 +3263,8 @@
                     </div>
 
                     <div class="category-grid" id="study-category-grid">
-                        <button
-                            type="button"
-                            class="category-card"
-                            data-category="listening"
-                            onclick="selectStudyCategory('listening')"
-                        >
+                        <button type="button" class="category-card" data-category="listening"
+                            onclick="selectStudyCategory('listening')">
                             <span class="category-card-icon">
                                 <i class="fa-solid fa-headphones"></i>
                             </span>
@@ -2670,12 +3276,8 @@
                             </div>
                         </button>
 
-                        <button
-                            type="button"
-                            class="category-card"
-                            data-category="reading"
-                            onclick="selectStudyCategory('reading')"
-                        >
+                        <button type="button" class="category-card" data-category="reading"
+                            onclick="selectStudyCategory('reading')">
                             <span class="category-card-icon">
                                 <i class="fa-solid fa-book-open"></i>
                             </span>
@@ -2687,12 +3289,8 @@
                             </div>
                         </button>
 
-                        <button
-                            type="button"
-                            class="category-card"
-                            data-category="part1"
-                            onclick="selectStudyCategory('part1')"
-                        >
+                        <button type="button" class="category-card" data-category="part1"
+                            onclick="selectStudyCategory('part1')">
                             <span class="category-card-icon">
                                 <i class="fa-solid fa-image"></i>
                             </span>
@@ -2710,13 +3308,8 @@
                             Chọn một danh mục trước khi bắt đầu.
                         </div>
 
-                        <button
-                            type="button"
-                            class="btn btn-primary category-start-btn"
-                            id="start-study-btn"
-                            onclick="startSelectedCategorySession()"
-                            disabled
-                        >
+                        <button type="button" class="btn btn-primary category-start-btn" id="start-study-btn"
+                            onclick="startSelectedCategorySession()" disabled>
                             <i class="fa-solid fa-play"></i>
                             Bắt đầu học
                         </button>
@@ -2762,13 +3355,8 @@
                     </div>
 
                     <div class="session-actions">
-                        <button
-                            type="button"
-                            class="btn btn-secondary hard-review-btn"
-                            onclick="startHardSession()"
-                            id="hard-study-btn"
-                            disabled
-                        >
+                        <button type="button" class="btn btn-secondary hard-review-btn" onclick="startHardSession()"
+                            id="hard-study-btn" disabled>
                             <i class="fa-solid fa-bolt"></i>
                             Ôn từ khó
                         </button>
@@ -2781,20 +3369,13 @@
                 </div>
 
                 <div class="study-focus-header">
-                    <button
-                        type="button"
-                        class="study-back-btn"
-                        onclick="exitStudyFocusMode()"
-                        aria-label="Quay lại màn chọn phiên học"
-                    >
+                    <button type="button" class="study-back-btn" onclick="exitStudyFocusMode()"
+                        aria-label="Quay lại màn chọn phiên học">
                         <i class="fa-solid fa-chevron-left"></i>
                     </button>
 
                     <div class="study-focus-heading">
-                        <div
-                            class="study-focus-category"
-                            id="study-focus-category"
-                        >
+                        <div class="study-focus-category" id="study-focus-category">
                             Phiên học
                         </div>
 
@@ -2805,13 +3386,8 @@
                         </div>
                     </div>
 
-                    <button
-                        type="button"
-                        class="study-focus-audio"
-                        onclick="speakCurrentWord()"
-                        aria-label="Phát âm từ hiện tại"
-                        title="Phát âm"
-                    >
+                    <button type="button" class="study-focus-audio" onclick="speakCurrentWord()"
+                        aria-label="Phát âm từ hiện tại" title="Phát âm">
                         <i class="fa-solid fa-volume-high"></i>
                     </button>
                 </div>
@@ -2899,6 +3475,26 @@
                     <div class="retention-value" id="retention-month">—</div>
                     <div class="retention-meta" id="retention-month-meta">Chưa có lượt ôn</div>
                 </div>
+            </div>
+
+            <div class="today-review-card" id="today-review-card">
+                <div class="today-review-main">
+                    <div class="today-review-kicker">Hôm nay</div>
+
+                    <div class="today-review-title">
+                        Từ đã học hôm nay
+                    </div>
+
+                    <div class="today-review-meta" id="today-review-meta">
+                        Chưa học từ nào hôm nay.
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary today-review-btn" id="today-review-btn"
+                    onclick="startTodayReviewSession()" disabled>
+                    <i class="fa-solid fa-rotate-right"></i>
+                    Ôn lại
+                </button>
             </div>
 
             <div class="level-stats-title">
@@ -3025,11 +3621,7 @@
                     </div>
                 </div>
 
-                <button
-                    type="button"
-                    class="btn btn-reset"
-                    onclick="resetLearningProgress()"
-                >
+                <button type="button" class="btn btn-reset" onclick="resetLearningProgress()">
                     <i class="fa-solid fa-rotate-left"></i>
                     Reset toàn bộ
                 </button>
@@ -3048,12 +3640,8 @@
             </div>
 
             <div class="manage-category-tabs" id="manage-category-tabs">
-                <button
-                    type="button"
-                    class="manage-category-tab active"
-                    data-category="listening"
-                    onclick="changeManageCategory('listening')"
-                >
+                <button type="button" class="manage-category-tab active" data-category="listening"
+                    onclick="changeManageCategory('listening')">
                     <div class="manage-category-name">
                         Từ trọng điểm kỹ năng nghe
                     </div>
@@ -3062,12 +3650,8 @@
                     </div>
                 </button>
 
-                <button
-                    type="button"
-                    class="manage-category-tab"
-                    data-category="reading"
-                    onclick="changeManageCategory('reading')"
-                >
+                <button type="button" class="manage-category-tab" data-category="reading"
+                    onclick="changeManageCategory('reading')">
                     <div class="manage-category-name">
                         Từ trọng điểm kỹ năng đọc
                     </div>
@@ -3076,12 +3660,8 @@
                     </div>
                 </button>
 
-                <button
-                    type="button"
-                    class="manage-category-tab"
-                    data-category="part1"
-                    onclick="changeManageCategory('part1')"
-                >
+                <button type="button" class="manage-category-tab" data-category="part1"
+                    onclick="changeManageCategory('part1')">
                     <div class="manage-category-name">
                         150 từ Part 1
                     </div>
@@ -3095,40 +3675,22 @@
 
                 <div class="form-group">
                     <label for="in-en">Từ tiếng Anh</label>
-                    <input
-                        type="text"
-                        id="in-en"
-                        required
-                        placeholder="VD: executive"
-                    >
+                    <input type="text" id="in-en" required placeholder="VD: executive">
                 </div>
 
                 <div class="form-group">
                     <label for="in-vi">Nghĩa tiếng Việt</label>
-                    <input
-                        type="text"
-                        id="in-vi"
-                        required
-                        placeholder="VD: người điều hành"
-                    >
+                    <input type="text" id="in-vi" required placeholder="VD: người điều hành">
                 </div>
 
                 <div class="form-group">
                     <label for="in-type">Từ loại</label>
-                    <input
-                        type="text"
-                        id="in-type"
-                        placeholder="VD: n, v, adj..."
-                    >
+                    <input type="text" id="in-type" placeholder="VD: n, v, adj...">
                 </div>
 
                 <div class="form-group">
                     <label for="in-phonetic">Phiên âm</label>
-                    <input
-                        type="text"
-                        id="in-phonetic"
-                        placeholder="VD: /ɪɡˈzek.jə.tɪv/"
-                    >
+                    <input type="text" id="in-phonetic" placeholder="VD: /ɪɡˈzek.jə.tɪv/">
                 </div>
 
                 <div class="form-group">
@@ -3151,21 +3713,13 @@
 
                 <div class="search-wrap">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input
-                        type="search"
-                        id="word-search"
-                        placeholder="Tìm từ tiếng Anh hoặc nghĩa tiếng Việt..."
-                        oninput="handleSearch(this.value)"
-                    >
+                    <input type="search" id="word-search" placeholder="Tìm từ tiếng Anh hoặc nghĩa tiếng Việt..."
+                        oninput="handleSearch(this.value)">
                 </div>
 
                 <div class="manage-tools">
-                    <select
-                        id="word-filter"
-                        class="filter-select"
-                        onchange="changeWordFilter(this.value)"
-                        aria-label="Lọc từ vựng"
-                    >
+                    <select id="word-filter" class="filter-select" onchange="changeWordFilter(this.value)"
+                        aria-label="Lọc từ vựng">
                         <option value="all">Tất cả từ</option>
                         <option value="due">Cần ôn hôm nay</option>
                         <option value="unseen">Chưa từng học</option>
@@ -3200,13 +3754,8 @@
                             Khôi phục
                         </button>
 
-                        <input
-                            id="backup-file-input"
-                            type="file"
-                            accept=".json,application/json"
-                            hidden
-                            onchange="importBackup(event)"
-                        >
+                        <input id="backup-file-input" type="file" accept=".json,application/json" hidden
+                            onchange="importBackup(event)">
                     </div>
                 </div>
 
@@ -3232,11 +3781,7 @@
             </div>
 
             <div class="pagination">
-                <button
-                    class="page-btn"
-                    id="prev-page"
-                    onclick="changePage(-1)"
-                >
+                <button class="page-btn" id="prev-page" onclick="changePage(-1)">
                     <i class="fa-solid fa-chevron-left"></i>
                     Trước
                 </button>
@@ -3245,11 +3790,7 @@
                     Trang 1 / 1
                 </span>
 
-                <button
-                    class="page-btn"
-                    id="next-page"
-                    onclick="changePage(1)"
-                >
+                <button class="page-btn" id="next-page" onclick="changePage(1)">
                     Sau
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
@@ -5120,6 +5661,7 @@
         let studyDirection = "en-vi";
         let studyMode = "flashcard";
         let sessionSourceMode = "due";
+        let sessionTitleOverride = "";
         let selectedStudyCategory = "";
         let activeManageCategory = "listening";
         let currentCardDirection = "en-vi";
@@ -5276,9 +5818,9 @@
                     word =>
                         word.category === "listening" &&
                         String(word.en || "").trim().toLowerCase() ===
-                            "state of the art equipment" &&
+                        "state of the art equipment" &&
                         String(word.vi || "").trim().toLowerCase() ===
-                            "thiết bị hiện đại nhất"
+                        "thiết bị hiện đại nhất"
                 );
 
                 if (deprecatedIndex !== -1) {
@@ -5659,6 +6201,56 @@
             });
         }
 
+        function getTodayStudiedWords() {
+            const key = getLocalDateKey();
+            const dayData = studyHistory[key];
+
+            if (
+                !dayData ||
+                !Array.isArray(dayData.uniqueWordIds)
+            ) {
+                return [];
+            }
+
+            const byId = new Map(
+                db.map(word => [word.id, word])
+            );
+
+            return dayData.uniqueWordIds
+                .map(id => byId.get(id))
+                .filter(Boolean);
+        }
+
+        function renderTodayReviewCard() {
+            const meta =
+                document.getElementById("today-review-meta");
+
+            const button =
+                document.getElementById("today-review-btn");
+
+            if (!meta || !button) return;
+
+            const words = getTodayStudiedWords();
+            const key = getLocalDateKey();
+            const dayData = studyHistory[key] || {};
+            const reviewCount =
+                Math.max(0, Number(dayData.reviewCount) || 0);
+
+            if (words.length === 0) {
+                meta.textContent =
+                    "Chưa học từ nào hôm nay.";
+
+                button.disabled = true;
+                return;
+            }
+
+            meta.innerHTML =
+                `<span class="today-review-count">${words.length} từ</span>` +
+                ` đã học · ${reviewCount} lượt ôn`;
+
+            button.disabled = false;
+        }
+
         function renderStudyHistory() {
             const tbody = document.getElementById("history-table-body");
             const summary = document.getElementById("history-summary");
@@ -5888,16 +6480,21 @@
 
             if (categoryEl) {
                 categoryEl.textContent =
-                    selectedStudyCategory
-                        ? getCategoryLabel(selectedStudyCategory)
-                        : "Phiên học";
+                    sessionTitleOverride ||
+                    (
+                        selectedStudyCategory
+                            ? getCategoryLabel(selectedStudyCategory)
+                            : "Phiên học"
+                    );
             }
 
             if (sourceEl) {
                 sourceEl.textContent =
                     sessionSourceMode === "hard"
                         ? "Từ khó"
-                        : "Đến hạn";
+                        : sessionSourceMode === "today"
+                            ? "Ôn hôm nay"
+                            : "Đến hạn";
             }
 
             if (progressEl) {
@@ -5941,6 +6538,8 @@
             sessionCompleted = 0;
             sessionWordState = new Map();
             lastSessionWordIds = [];
+            sessionTitleOverride = "";
+            sessionSourceMode = "due";
 
             const buttons =
                 document.getElementById("action-buttons");
@@ -5965,6 +6564,59 @@
             speakWord(currentWord.en);
         }
 
+        function startTodayReviewSession() {
+            speechSynthesis.cancel();
+
+            const todayWords = getTodayStudiedWords();
+
+            if (todayWords.length === 0) {
+                alert("Hôm nay chưa có từ nào để ôn lại.");
+                return;
+            }
+
+            const selectedWords = shuffle([...todayWords]);
+
+            sessionSourceMode = "today";
+            sessionTitleOverride = "Từ đã học hôm nay";
+
+            reviewQueue = selectedWords.map(word => word.id);
+            currentWord = null;
+            sessionTotal = selectedWords.length;
+            sessionAnswered = 0;
+            sessionCompleted = 0;
+            sessionWordState = new Map();
+            lastSessionWordIds = selectedWords.map(word => word.id);
+            lastUndoSnapshot = null;
+            hideUndoToast();
+
+            selectedWords.forEach(word => {
+                sessionWordState.set(word.id, {
+                    appearances: 0,
+                    fails: 0,
+                    completed: false
+                });
+            });
+
+            const sourceLabel =
+                document.getElementById("session-source-label");
+
+            if (sourceLabel) {
+                sourceLabel.textContent = "Ôn hôm nay";
+            }
+
+            document.getElementById(
+                "session-size-text"
+            ).textContent = sessionTotal;
+
+            document.getElementById(
+                "session-progress"
+            ).style.width = "0%";
+
+            enterStudyFocusMode();
+            updateStudyFocusHeader();
+            nextCard();
+        }
+
         function startSelectedCategorySession() {
             if (!selectedStudyCategory) {
                 alert("Hãy chọn một danh mục trước khi bắt đầu.");
@@ -5977,6 +6629,8 @@
 
         function resetStudyCategorySelection() {
             document.body.classList.remove("study-focus-mode");
+            sessionTitleOverride = "";
+            sessionSourceMode = "due";
             selectedStudyCategory = "";
 
             document.querySelectorAll(
@@ -6176,13 +6830,13 @@
         function deepCloneSessionState() {
             return Array.from(sessionWordState.entries()).map(([id, state]) => [
                 id,
-                {...state}
+                { ...state }
             ]);
         }
 
         function restoreSessionState(entries) {
             sessionWordState = new Map(
-                entries.map(([id, state]) => [id, {...state}])
+                entries.map(([id, state]) => [id, { ...state }])
             );
         }
 
@@ -6192,6 +6846,7 @@
 
         function startSession(sourceMode = "due") {
             speechSynthesis.cancel();
+            sessionTitleOverride = "";
 
             if (!selectedStudyCategory) {
                 showStudyCategoryReadyState();
@@ -6557,14 +7212,16 @@
                         </strong>
 
                         <div style="margin-top:8px;max-width:520px">
-                            Từ vẫn quên sau ${MAX_APPEARANCES_PER_SESSION} lần
-                            sẽ được ưu tiên trong phiên sau.
+                            ${sessionSourceMode === "today"
+                        ? "Đã ôn xong toàn bộ từ bạn đã học hôm nay."
+                        : `Từ vẫn quên sau ${MAX_APPEARANCES_PER_SESSION} lần
+                                       sẽ được ưu tiên trong phiên sau.`
+                    }
                         </div>
 
                         <div class="completion-actions">
-                            ${
-                                canQuiz
-                                    ? `
+                            ${canQuiz
+                        ? `
                                         <button
                                             type="button"
                                             class="btn btn-primary"
@@ -6574,16 +7231,38 @@
                                             Làm quiz cuối phiên
                                         </button>
                                     `
-                                    : ""
-                            }
+                        : ""
+                    }
 
-                            <button
-                                type="button"
-                                class="btn btn-secondary"
-                                onclick="startSession('due')"
-                            >
-                                Học phiên mới
-                            </button>
+                            ${sessionSourceMode === "today"
+                        ? `
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            onclick="startTodayReviewSession()"
+                                        >
+                                            <i class="fa-solid fa-rotate-right"></i>
+                                            Ôn lại hôm nay
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            onclick="exitStudyFocusMode(true)"
+                                        >
+                                            Thoát
+                                        </button>
+                                    `
+                        : `
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            onclick="startSession('due')"
+                                        >
+                                            Học phiên mới
+                                        </button>
+                                    `
+                    }
                         </div>
                     </div>
                 `;
@@ -6686,11 +7365,10 @@
                                 ${escapeHtml(frontMain)}
                             </div>
 
-                            ${
-                                direction === "en-vi"
-                                    ? `<div class="word-type">${escapeHtml(currentWord.type)}</div>`
-                                    : ""
-                            }
+                            ${direction === "en-vi"
+                    ? `<div class="word-type">${escapeHtml(currentWord.type)}</div>`
+                    : ""
+                }
 
                             <div class="flip-hint">
                                 Chạm để lật thẻ
@@ -6709,11 +7387,10 @@
                                 <i class="fa-solid fa-volume-high"></i>
                             </button>
 
-                            ${
-                                currentWord.phonetic
-                                    ? `<div class="word-phonetic">${escapeHtml(currentWord.phonetic)}</div>`
-                                    : ""
-                            }
+                            ${currentWord.phonetic
+                    ? `<div class="word-phonetic">${escapeHtml(currentWord.phonetic)}</div>`
+                    : ""
+                }
 
                             <div class="${backClass}">
                                 ${escapeHtml(backMain)}
@@ -6952,26 +7629,23 @@
                                 placeholder="Nhập đáp án..."
                                 ${quizAnswered ? "disabled" : ""}
                             >
-                            ${
-                                !quizAnswered
-                                    ? `
+                            ${!quizAnswered
+                        ? `
                                         <button type="submit" class="btn typing-check">
                                             Trả lời
                                         </button>
                                     `
-                                    : ""
-                            }
+                        : ""
+                    }
                         </form>
 
-                        ${
-                            quizAnswered
-                                ? renderQuizFeedback(question)
-                                : ""
-                        }
+                        ${quizAnswered
+                        ? renderQuizFeedback(question)
+                        : ""
+                    }
 
-                        ${
-                            quizAnswered
-                                ? `
+                        ${quizAnswered
+                        ? `
                                     <div class="quiz-next-row">
                                         <button
                                             type="button"
@@ -6982,8 +7656,8 @@
                                         </button>
                                     </div>
                                 `
-                                : ""
-                        }
+                        : ""
+                    }
                     </div>
                 `;
 
@@ -7015,23 +7689,23 @@
 
                     <div class="quiz-options">
                         ${question.options.map(option => {
-                            let extraClass = "";
+                let extraClass = "";
 
-                            if (quizAnswered) {
-                                if (
-                                    normalizeAnswer(option) ===
-                                    normalizeAnswer(question.answer)
-                                ) {
-                                    extraClass = "correct";
-                                } else if (
-                                    normalizeAnswer(option) ===
-                                    normalizeAnswer(quizSelectedAnswer)
-                                ) {
-                                    extraClass = "wrong";
-                                }
-                            }
+                if (quizAnswered) {
+                    if (
+                        normalizeAnswer(option) ===
+                        normalizeAnswer(question.answer)
+                    ) {
+                        extraClass = "correct";
+                    } else if (
+                        normalizeAnswer(option) ===
+                        normalizeAnswer(quizSelectedAnswer)
+                    ) {
+                        extraClass = "wrong";
+                    }
+                }
 
-                            return `
+                return `
                                 <button
                                     type="button"
                                     class="quiz-option ${extraClass}"
@@ -7041,18 +7715,16 @@
                                     ${escapeHtml(option)}
                                 </button>
                             `;
-                        }).join("")}
+            }).join("")}
                     </div>
 
-                    ${
-                        quizAnswered
-                            ? renderQuizFeedback(question)
-                            : ""
-                    }
+                    ${quizAnswered
+                    ? renderQuizFeedback(question)
+                    : ""
+                }
 
-                    ${
-                        quizAnswered
-                            ? `
+                    ${quizAnswered
+                    ? `
                                 <div class="quiz-next-row">
                                     <button
                                         type="button"
@@ -7063,8 +7735,8 @@
                                     </button>
                                 </div>
                             `
-                            : ""
-                    }
+                    : ""
+                }
                 </div>
             `;
         }
@@ -7076,11 +7748,10 @@
 
             return `
                 <div class="typing-feedback ${correct ? "correct" : "incorrect"}">
-                    ${
-                        correct
-                            ? "<strong>Đúng.</strong>"
-                            : `<strong>Chưa đúng.</strong> Đáp án: ${escapeHtml(question.answer)}`
-                    }
+                    ${correct
+                    ? "<strong>Đúng.</strong>"
+                    : `<strong>Chưa đúng.</strong> Đáp án: ${escapeHtml(question.answer)}`
+                }
                 </div>
             `;
         }
@@ -7853,7 +8524,7 @@
 
             const blob = new Blob(
                 [JSON.stringify(backup, null, 2)],
-                {type: "application/json"}
+                { type: "application/json" }
             );
 
             const url = URL.createObjectURL(blob);
@@ -7918,7 +8589,7 @@
                         HISTORY_KEY,
                         JSON.stringify(
                             backup.studyHistory &&
-                            typeof backup.studyHistory === "object"
+                                typeof backup.studyHistory === "object"
                                 ? backup.studyHistory
                                 : {}
                         )
@@ -7927,7 +8598,7 @@
                     const settings = backup.settings || {};
 
                     if (
-                        [10,20,30,50,100,200,300,400]
+                        [10, 20, 30, 50, 100, 200, 300, 400]
                             .includes(Number(settings.sessionLimit))
                     ) {
                         localStorage.setItem(
@@ -8053,6 +8724,7 @@
             }
 
             renderRetention();
+            renderTodayReviewCard();
             renderStudyHistory();
 
             for (let level = 0; level <= 5; level++) {
@@ -8416,7 +9088,7 @@
                     HISTORY_KEY,
                     JSON.stringify(
                         state.studyHistory &&
-                        typeof state.studyHistory === "object"
+                            typeof state.studyHistory === "object"
                             ? state.studyHistory
                             : {}
                     )
@@ -8425,7 +9097,7 @@
                 const settings = state.settings || {};
 
                 if (
-                    [10,20,30,50,100,200,300,400]
+                    [10, 20, 30, 50, 100, 200, 300, 400]
                         .includes(Number(settings.sessionLimit))
                 ) {
                     localStorage.setItem(
@@ -8474,7 +9146,7 @@
                 );
 
                 if (
-                    [10,20,30,50,100,200,300,400]
+                    [10, 20, 30, 50, 100, 200, 300, 400]
                         .includes(savedLimit)
                 ) {
                     sessionLimit = savedLimit;
@@ -8799,7 +9471,7 @@
                 localStorage.getItem(SESSION_LIMIT_KEY)
             );
 
-            if ([10,20,30,50,100,200,300,400].includes(savedLimit)) {
+            if ([10, 20, 30, 50, 100, 200, 300, 400].includes(savedLimit)) {
                 sessionLimit = savedLimit;
             }
 
@@ -8884,12 +9556,7 @@
         });
     </script>
 
-    <div
-        class="modal-backdrop"
-        id="word-modal"
-        onclick="handleModalBackdrop(event)"
-        aria-hidden="true"
-    >
+    <div class="modal-backdrop" id="word-modal" onclick="handleModalBackdrop(event)" aria-hidden="true">
         <div class="word-modal-card" role="dialog" aria-modal="true" aria-labelledby="word-modal-title">
             <div id="word-modal-content"></div>
         </div>
@@ -8917,4 +9584,5 @@
     </script>
 
 </body>
+
 </html>

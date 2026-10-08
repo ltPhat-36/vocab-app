@@ -1,14 +1,14 @@
 {
-  "name": "Vocab",
+  "name": "Vocab Premium",
   "short_name": "Vocab",
-  "description": "Ứng dụng học từ vựng có đồng bộ cloud.",
+  "description": "Ứng dụng học từ vựng và ôn tập SRS.",
   "lang": "vi",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#f7f8fb",
-  "theme_color": "#f7f8fb",
+  "background_color": "#F8FAFC",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "./icons/icon-192.png",
